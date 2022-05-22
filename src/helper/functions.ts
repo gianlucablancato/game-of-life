@@ -1,4 +1,4 @@
-type TGrid = Array<Array<number>>;
+export type TGrid = Array<Array<number>>;
 
 // function to create grid
 const createGrid = (columns: number, rows: number): TGrid => {
@@ -15,12 +15,12 @@ const fillGrid = (columns: number, rows: number): TGrid => {
 };
 
 const getLiveGrid = (): TGrid => {
-  const grid = fillGrid(20, 20);
+  const grid = fillGrid(40, 40);
   const nextGrid = [...grid];
   grid.map((r, i) =>
     r.map((c, j) => {
       //if statement to avoid crash on corner/edge
-      if (i === 0 || j === 0 || i === 20 - 1 || j === 20 - 1) {
+      if (i === 0 || j === 0 || i === 40 - 1 || j === 40 - 1) {
         nextGrid[i][j] = grid[i][j];
       } else {
         let neighbors = countNeighbors(grid, i, j);
@@ -55,4 +55,4 @@ const countNeighbors = (
   return initialState;
 };
 
-export { getLiveGrid, countNeighbors };
+export { getLiveGrid };
